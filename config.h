@@ -43,9 +43,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-//static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };
-//static const char *tags[] = { "😀", "🥶", "😘", "🤪", "🥲", "🤗", "😪",  "🤩",  "👻"};
 
 
 
@@ -71,9 +69,6 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "Tile",      tile },    /* first entry is default */
-	{ "[一]",      monocle },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
  	{ "[@]",      spiral },
  	{ "[\\]",      dwindle },
 };
@@ -93,10 +88,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 //static const char *dmenucmd[] = {"rofi","-show","drun","-show-icons",NULL};
-//static const char *termcmd[]  = { "st", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-//static const char *termcmd[]  = { "kitty", NULL };
-//static const char *browsercmd[]  = { "chromium", NULL };
 static const char *browsercmd[]  = { "brave", NULL };
 static const char *tor[]  = { "tor", NULL };
 static const char scratchpadname[] = "scratchpad";
@@ -116,10 +108,7 @@ static const char *volumedecrease[] = { "/home/masterj/scripts/volume_decrease.s
 static const char *dmenuunicode[] = {"/home/masterj/scripts/dmenuunicode",NULL};
 static Key keys[] = {
 	/* modifier            key                      function        argument */
-	{ MODKEY,              XK_u,      				setlayout,     	{.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,    XK_u,      				setlayout,     	{.v = &layouts[3]} },
-	{ MODKEY,              XK_r,      				setlayout,     	{.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,    XK_r,      				setlayout,    	{.v = &layouts[5]} },
+	{ MODKEY,              XK_r,      				setlayout,     	{.v = &layouts[2]} },
 	{ MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,    XK_d,                    spawn,          {.v = dmenuunicode }},	
 	{ MODKEY,              XK_Return,               spawn,          {.v = termcmd } },
@@ -141,10 +130,10 @@ static Key keys[] = {
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
       
-	{ MODKEY|ShiftMask,   XK_i,                    viewtoleft,     {0} },
+	{ MODKEY,             XK_u,                    viewtoleft,     {0} },
 	{ MODKEY,             XK_i,                    viewtoright,    {0} },
-//	{ MODKEY|ShiftMask,    XK_u,                    tagtoleft,      {0} },
-//	{ MODKEY|ShiftMask,    XK_i,                    tagtoright,     {0} },
+	{ MODKEY|ShiftMask,    XK_u,                    tagtoleft,      {0} },
+  { MODKEY|ShiftMask,    XK_i,                    tagtoright,     {0} },
 
 	{ MODKEY|ShiftMask,    XK_h,                    incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_l,                    incnmaster,     {.i = -1 } },
@@ -189,7 +178,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[1]} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[0]} },
 	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
